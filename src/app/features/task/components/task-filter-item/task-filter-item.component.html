@@ -1,0 +1,10 @@
+<li class="mr-2">
+  <a
+    [routerLink]="'/tasks'"
+    [queryParams]="{ status: filter }"
+    class="inline-block p-4 cursor-pointer border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+    [ngClass]="{ 'font-extrabold': isActive }"
+    (click)="handleFilterClick(filter)"
+    >{{ filter || 'All' }}
+  </a>
+</li>

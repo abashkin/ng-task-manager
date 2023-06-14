@@ -1,0 +1,19 @@
+<div class="bg-white rounded shadow p-6 m-4 w-full">
+  <h1 class="text-grey-darkest text-3xl">Task Management</h1>
+  <app-add-task-form (addTask)="addTask($event)"></app-add-task-form>
+
+  <ul class="flex flex-wrap -mb-px">
+    <app-task-filter-item [isActive]="!currentFilter"></app-task-filter-item>
+    <app-task-filter-item
+      *ngFor="let taskFilter of taskFilters"
+      [filter]="taskFilter"
+      [isActive]="taskFilter === currentFilter"></app-task-filter-item>
+  </ul>
+
+  <div>
+    <app-task
+      *ngFor="let task of tasks; trackBy: taskTrackByFn"
+      [task]="task"
+      (changeStatus)="completeTask($event)" />
+  </div>
+</div>
